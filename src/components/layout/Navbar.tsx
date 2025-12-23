@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import logo from "@/assets/favicon.ico";
+
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -48,7 +50,11 @@ export const Navbar = () => {
               transition={{ duration: 0.5 }}
               className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center glow-sm"
             >
-              <Zap className="w-5 h-5 text-primary" />
+             <img
+    src={logo}
+    alt="Logo"
+    className="w-6 h-6 object-contain"
+  />
             </motion.div>
             <span className="font-display text-xl font-bold text-foreground">
               Measure<span className="text-primary"> Tech</span>
