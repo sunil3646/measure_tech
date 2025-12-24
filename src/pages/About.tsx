@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { AnimatedCard } from "@/components/common/AnimatedCard";
 import { Target, Eye, Award, Users, Globe } from "lucide-react";
 import aboutFactory from "@/assets/about-factory.jpg";
+import whatsappImg from "@/assets/WhatsApp Image 2025-12-23 at 8.55.00 PM.jpeg";
 
+/*
 const timeline = [
   {
     year: "1995",
@@ -40,7 +43,7 @@ const timeline = [
     title: "Innovation Award",
     description: "Recognized as industry leader for sustainable electronics.",
   },
-];
+]; */
 
 const values = [
   {
@@ -63,7 +66,56 @@ const values = [
     title: "Sustainability",
     description: "Committed to environmentally responsible practices.",
   },
-];
+]; 
+
+// Simple slideshow component (auto-advance + manual dots)
+const Slideshow = ({
+  images,
+  className = "",
+}: {
+  images: string[];
+  className?: string;
+}) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (!images || images.length <= 1) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 5000);
+    return () => clearInterval(id);
+  }, [images]);
+
+  return (
+    <div className={`rounded-2xl overflow-hidden border border-border relative ${className}`}>
+      <div className="relative w-full h-full">
+        {images.map((src, i) => (
+          <motion.img
+            key={src}
+            src={src}
+            alt={`slide-${i}`}
+            initial={{ opacity: 0, scale: 1.02 }}
+            animate={i === index ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ))}
+
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                i === index ? "bg-primary" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const About = () => {
   return (
@@ -101,23 +153,8 @@ const About = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative"
             >
-              <div className="rounded-2xl overflow-hidden border border-border">
-                <img
-                  src={aboutFactory}
-                  alt="Modern electronics manufacturing facility"
-                  className="w-full h-[400px] object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 glass rounded-xl p-4 border border-primary/20">
-                {/*<div className="text-3xl font-display font-bold text-primary">
-                  28+
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  Years of Excellence
-                </div>
-                */}
-
-              </div>
+              {/* Slideshow: WhatsApp image first, then aboutFactory */}
+              <Slideshow images={[whatsappImg, aboutFactory]} className="h-[400px]" />
             </motion.div>
           </div>
         </div>

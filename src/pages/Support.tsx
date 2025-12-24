@@ -45,13 +45,13 @@ export const Support = () => {
                   <div className="flex items-center gap-3 mb-3">
                     <MapPin className="w-5 h-5 text-primary" />
                     <div className="text-sm text-muted-foreground">
-                      MeasureTech Solutions, Hyderabad
+                      8-42/8, Sri Sai Nagar Colony, Balapur, Hyderabad, Telangana, 500005
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="w-5 h-5 text-primary" />
                     <div className="text-sm text-muted-foreground">
-                      support@measuretech.com
+                      measuretechllp@gmail.com
                     </div>
                   </div>
                 </div>
@@ -60,7 +60,7 @@ export const Support = () => {
                   <div className="flex items-center gap-3 mb-3">
                     <Phone className="w-5 h-5 text-primary" />
                     <div className="text-sm text-muted-foreground">
-                      +91-9876543210
+                      +91-9505919927
                     </div>
                   </div>
                   <div className="text-sm text-muted-foreground">

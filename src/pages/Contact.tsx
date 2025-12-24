@@ -25,7 +25,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["MeasureTech Solutions", "Hyderabad, Telangana, India"],
+    details: ["8-42/8, Sri Sai Nagar Colony, Balapur, Hyderabad, Telangana, 500005"],
   },
   {
     icon: Clock,
@@ -175,24 +175,7 @@ const Contact = () => {
                 </motion.div>
               ))}
 
-              {/* Small gallery */}
-              <div className="grid grid-cols-3 gap-2 mt-4">
-                <img
-                  src={gallery1}
-                  alt="Lab 1"
-                  className="w-full h-20 object-cover rounded-md border border-border"
-                />
-                <img
-                  src={gallery2}
-                  alt="Lab 2"
-                  className="w-full h-20 object-cover rounded-md border border-border"
-                />
-                <img
-                  src={gallery3}
-                  alt="Lab 3"
-                  className="w-full h-20 object-cover rounded-md border border-border"
-                />
-              </div>
+              
             </motion.div>
 
             {/* Contact Form */}
@@ -365,15 +348,30 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="rounded-2xl overflow-hidden border border-border h-96 bg-secondary/30 flex items-center justify-center relative"
           >
-            <div className="text-center z-10">
-              <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                Our Location
-              </h3>
-              <p className="text-muted-foreground">
-                123 Tech Boulevard, Innovation City
-              </p>
-            </div>
+            <div className="relative w-full h-[450px] rounded-xl overflow-hidden">
+  {/* Google Map */}
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d375.9923811306697!2d78.51158788697164!3d17.310630238205533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s8-42%2F8%2C%20Sri%20Sai%20Nagar%20Colony%2C%20balapur%2C%20Hyderabad%2C%20Telangana%2C%20500005!5e0!3m2!1sen!2sus!4v1766549441692!5m2!1sen!2sus"
+    className="w-full h-full border-0"
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    allowFullScreen
+  />
+
+  {/* Text on top of map */}
+  <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+    <div className="text-center z-10">
+      <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
+      <h3 className="font-display text-xl font-semibold text-white mb-2">
+        Our Location
+      </h3>
+      <p className="text-gray-200">
+        8-42/8, Sri Sai Nagar Colony, Balapur, Hyderabad
+      </p>
+    </div>
+  </div>
+</div>
+
           </motion.div>
         </div>
       </section>
